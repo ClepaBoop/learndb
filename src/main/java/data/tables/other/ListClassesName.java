@@ -10,21 +10,23 @@ import java.util.regex.Pattern;
 
 public class ListClassesName {
 
-    public static void main(String[] args) throws IOException {
 
-        Path dir = Paths.get("./src/main/java/data/tables");
-        try (DirectoryStream<Path> stream = Files.newDirectoryStream(dir)) {
+    public static ArrayList<String> classesName(String path) throws IOException {
+//        "./src/main/java/data/tables"
+        ArrayList<String> list = new ArrayList<>();
+
+        Path dir = Paths.get(path);
+        DirectoryStream<Path> stream = Files.newDirectoryStream(dir);
 
             Pattern pattern = Pattern.compile(".java", Pattern.CASE_INSENSITIVE);
-            for (Path file: stream) {
+            for (Path file : stream) {
                 String str = file.getFileName().toString();
                 Matcher match = pattern.matcher(str);
                 if (match.find()) {
-                    System.out.println(file.getFileName());
+                    list.add(str);
                 }
             }
-        }
-
+            return list;
     }
 
 
