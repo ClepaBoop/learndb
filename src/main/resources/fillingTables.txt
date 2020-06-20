@@ -1,0 +1,80 @@
+
+timezone
+insert learndb.timezone (time_offset) values ("UTS+2")
+insert learndb.timezone (time_offset) values ("UTS+3")
+insert learndb.timezone (time_offset) values ("UTS+4")
+insert learndb.timezone (time_offset) values ("UTS+5")
+insert learndb.timezone (time_offset) values ("UTS+6")
+insert learndb.timezone (time_offset) values ("UTS+7")
+insert learndb.timezone (time_offset) values ("UTS+8")
+insert learndb.timezone (time_offset) values ("UTS+10")
+insert learndb.timezone (time_offset) values ("UTS+1")
+insert learndb.timezone (time_offset) values ("UTS+9")
+
+city
+insert learndb.city (name, timezone_id) values ("Москва", 2)
+insert learndb.city (name, timezone_id) values ("Санкт-Петербург	", 2)
+insert learndb.city (name, timezone_id) values ("Новосибирск", 5)
+insert learndb.city (name, timezone_id) values ("Владивосток", 8)
+insert learndb.city (name, timezone_id) values ("Уфа", 4)
+insert learndb.city (name, timezone_id) values ("Калининград", 1)
+insert learndb.city (name, timezone_id) values ("Кемерово", 6)
+insert learndb.city (name, timezone_id) values ("Самара", 3)
+insert learndb.city (name, timezone_id) values ("Барнаул", 5)
+insert learndb.city (name, timezone_id) values ("Иркутск", 7)
+
+city
+insert learndb.city (name, timezone_id) values ("Moscow", 2)
+insert learndb.city (name, timezone_id) values ("St. Petersburg	", 2)
+insert learndb.city (name, timezone_id) values ("Novosibirsk", 5)
+insert learndb.city (name, timezone_id) values ("Vladivostok", 8)
+insert learndb.city (name, timezone_id) values ("Ufa", 4)
+insert learndb.city (name, timezone_id) values ("Kaliningrad", 1)
+insert learndb.city (name, timezone_id) values ("Kemerovo", 6)
+insert learndb.city (name, timezone_id) values ("Samara", 3)
+insert learndb.city (name, timezone_id) values ("Barnaul", 5)
+insert learndb.city (name, timezone_id) values ("Irkutsk", 7)
+
+store
+insert learndb.store (store_id, name, site_url) values (100, "Pioner", "pioner.ru" )
+insert learndb.store (store_id, name, site_url) values (200, "Mars", "mars.ru" )
+insert learndb.store (store_id, name, site_url) values (300, "Adalin", "adalin.ru" )
+insert learndb.store (store_id, name, site_url) values (100, "Europe", "evropa.ru" )
+insert learndb.store (store_id, name, site_url) values (500, "March", "mart.ru" )
+insert learndb.store (store_id, name, site_url) values (600, "Umi", "" )
+insert learndb.store (store_id, name, site_url) values (800, "Uneversam", "" )
+insert learndb.store (store_id, name, site_url) values (900, "Big", "big.ru" )
+insert learndb.store (store_id, name, site_url) values (201, "Saturn", "saturn" )
+insert learndb.store (store_id, name, site_url) values (301, "Adalin-family", "adalin-ultra.ru" )
+insert learndb.store (store_id, name, site_url) values (302, "Adalin-ultra.ru", "" )
+
+store_address
+insert learndb.store_address (store_address_id, store_id, city_id, address, opening_hours, phone) values (10, 100, 1, "st. Arbat, 20", "Mon-Fri.: From 09: 00-17: 00", "7(495)312-03-08" )
+insert learndb.store_address (store_address_id, store_id, city_id, address, opening_hours, phone) values (11, 100, 1, "st. Builders, 124", "Mon-Fri.: From 09: 00-17: 00", "7(495)312-03-08" )
+insert learndb.store_address (store_address_id, store_id, city_id, address, opening_hours, phone) values (12, 100, 5, "Lenin Ave., 42", "Mon-Fri.: From 08: 00-18: 00", "7(495)312-03-08" )
+insert learndb.store_address (store_address_id, store_id, city_id, address, opening_hours, phone) values (20, 200, 2, "st. Kazan, 43", "Mon-Fri.: From 08: 00-16: 00", "7(812)700-03-03" )
+insert learndb.store_address (store_address_id, store_id, city_id, address, opening_hours, phone) values (30, 300, 3, "st. Lenin, 18", "Mon-Fri.: From 07: 00-19: 00", "7(383)568-03-03" )
+insert learndb.store_address (store_address_id, store_id, city_id, address, opening_hours, phone) values (40, 400, 4, "st. Mira, 12", "", "	7(423)568-53-88" )
+insert learndb.store_address (store_address_id, store_id, city_id, address, opening_hours, phone) values (50, 500, 5, "st. Liberty 50", "Mon-Fri.: From 09: 00-17: 00", "7(347)668-56-66" )
+insert learndb.store_address (store_address_id, store_id, city_id, address, opening_hours, phone) values (60, 600, 6, "st. Suvorova, 11", "Mon-Fri.: From 10: 00-22: 00", "" )
+insert learndb.store_address (store_address_id, store_id, city_id, address, opening_hours, phone) values (61, 600, 6, "st. Chkalova, 42", "Mon-Fri.: From 08: 00-20: 00", "" )
+insert learndb.store_address (store_address_id, store_id, city_id, address, opening_hours, phone) values (80, 800, 8, "st. Michurina, 60", "Mon-Fri.: From 09: 00-17: 00", "7(846)000-54-44" )
+insert learndb.store_address (store_address_id, store_id, city_id, address, opening_hours, phone) values (90, 900, 9, "st. Lazurnaya, 79", "Mon-Fri.: From 09: 00-17: 00", "7(385)777-77-07" )
+insert learndb.store_address (store_address_id, store_id, city_id, address, opening_hours, phone) values (21, 201, 2, "st. Sedova, 33", "Mon-Fri.: From 09: 00-17: 00", "" )
+
+category
+insert learndb.category (parent_category_id, name) values (null, "Household products")
+insert learndb.category (parent_category_id, name) values (null, "Digital technology")
+insert learndb.category (parent_category_id, name) values (1, "Appliances")
+insert learndb.category (parent_category_id, name) values (2, "Laptops & Accessories")
+insert learndb.category (parent_category_id, name) values (2, "Cameras")
+insert learndb.category (parent_category_id, name) values (2, "Game consoles")
+insert learndb.category (parent_category_id, name) values (2, "Audio equipment")
+insert learndb.category (parent_category_id, name) values (2, "Cell Phones")
+insert learndb.category (parent_category_id, name) values (4, "Laptops")
+insert learndb.category (parent_category_id, name) values (4, "Rucksacks")
+
+
+
+
+

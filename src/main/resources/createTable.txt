@@ -1,0 +1,109 @@
+
+CREATE TABLE learndb2.timezone (
+    timezone_id INT NOT NULL AUTO_INCREMENT,
+    time_offset VARCHAR(45) NOT NULL,
+    CONSTRAINT timezone__pk PRIMARY KEY (timezone_id),
+    CONSTRAINT timezone__offset__uk UNIQUE (time_offset)
+);
+CREATE TABLE learndb2.city (
+    city_id INT NOT NULL AUTO_INCREMENT,
+    name VARCHAR(45) NOT NULL,
+    timezone_id INT NOT NULL,
+    CONSTRAINT city__pk PRIMARY KEY (city_id),
+    CONSTRAINT city__to__timezone FOREIGN KEY (timezone_id) REFERENCES timezone (timezone_id)
+);
+CREATE TABLE learndb2.store (
+    store_id INT NOT NULL AUTO_INCREMENT,
+    name VARCHAR(45) NOT NULL,
+    site_url VARCHAR(45),
+    CONSTRAINT store__pk PRIMARY KEY (store_id),
+    CONSTRAINT store__name__uk UNIQUE (name)
+);
+CREATE TABLE learndb2.store_address (
+    store_address_id INT NOT NULL AUTO_INCREMENT,
+    store_id INT NOT NULL,
+    city_id INT NOT NULL,
+    address VARCHAR(90) NOT NULL,
+    opening_hours VARCHAR(90),
+    phone VARCHAR(90),
+    CONSTRAINT store_address__pk PRIMARY KEY (store_address_id),
+    CONSTRAINT store_address__address__UK UNIQUE (store_id, city_id, address),
+    CONSTRAINT store_address__to__store FOREIGN KEY (store_id) REFERENCES store (store_id),
+    CONSTRAINT store_address__to__city FOREIGN KEY (city_id) REFERENCES city (city_id)
+);
+CREATE TABLE learndb2.category (
+    category_id INT NOT NULL AUTO_INCREMENT,
+    parent_category_id INT,
+    name VARCHAR(90) NOT NULL,
+    CONSTRAINT category__pk PRIMARY KEY (category_id),
+    CONSTRAINT category__parent__fk FOREIGN KEY (parent_category_id) REFERENCES category (category_id),
+    CONSTRAINT category__name__uk UNIQUE (parent_category_id, name)
+);
+CREATE TABLE learndb2.product (
+    product_id INT NOT NULL AUTO_INCREMENT,
+    category_id INT NOT NULL,
+    name VARCHAR(45) NOT NULL,
+    description VARCHAR(45),
+    CONSTRAINT product__pk PRIMARY KEY (product_id),
+    CONSTRAINT product__to__category FOREIGN KEY (category_id) REFERENCES category (category_id),
+    CONSTRAINT product__name__uk UNIQUE (category_id, name)
+);
+CREATE TABLE learndb2.product_price (
+    product_id INT NOT NULL AUTO_INCREMENT,
+    store_id INT NOT NULL,
+    price NUMERIC (15, 2) NOT NULL,
+    CONSTRAINT product_price__pk PRIMARY KEY (product_id, store_id),
+    CONSTRAINT product_price__price__ck CHECK (price > 0)
+);
+CREATE TABLE learndb2.rank (
+    store_id INT NOT NULL AUTO_INCREMENT,
+    rank_id VARCHAR(45) NOT NULL,
+    name VARCHAR(45) NOT NULL,
+    CONSTRAINT rank__pk PRIMARY KEY (store_id, rank_id),
+    CONSTRAINT rank__to__store FOREIGN KEY (store_id) REFERENCES store (store_id)
+);
+CREATE TABLE learndb2.employee (
+    employee_id INT NOT NULL AUTO_INCREMENT,
+    store_id INT NOT NULL,
+    rank_id VARCHAR(45) NOT NULL,
+    first_name VARCHAR(45) NOT NULL,
+    last_name VARCHAR(45) NOT NULL,
+    middle_name VARCHAR(45),
+    manager_id INT,
+    CONSTRAINT employee__pk PRIMARY KEY (employee_id),
+    CONSTRAINT employee__to__rank FOREIGN KEY (store_id, rank_id) REFERENCES rank (store_id, rank_id),
+    CONSTRAINT employee__manager__fk FOREIGN KEY (manager_id) REFERENCES employee (employee_id)
+);
+CREATE TABLE learndb2.purchase (
+    purchase_id INT NOT NULL AUTO_INCREMENT,
+    purchase_date date NOT NULL,
+    store_id INT NOT NULL,
+    employee_id INT,
+    CONSTRAINT purchase__pk PRIMARY KEY (purchase_id),
+    CONSTRAINT purchase__to__employee FOREIGN KEY (employee_id) REFERENCES employee (employee_id),
+    CONSTRAINT purchase__to__store FOREIGN KEY (store_id) REFERENCES store (store_id)
+);
+CREATE TABLE learndb2.purchase_item (
+    purchase_item_id INT NOT NULL AUTO_INCREMENT,
+    purchase_id INT NOT NULL,
+    product_id INT NOT NULL,
+    price NUMERIC (15, 2) NOT NULL,
+    count INT NOT NULL,
+    CONSTRAINT purchase_item__pk PRIMARY KEY (purchase_item_id),
+    CONSTRAINT purchase_item__product__uk UNIQUE (purchase_id, product_id),
+    CONSTRAINT purchase_item__to__purchase FOREIGN KEY (purchase_id) REFERENCES purchase (purchase_id),
+    CONSTRAINT purchase_item__to__product FOREIGN KEY (product_id) REFERENCES product (product_id),
+    CONSTRAINT purchase_item__price__ck CHECK (price > 0),
+    CONSTRAINT purchase_item__count__ck CHECK (count > 0)
+);
+CREATE INDEX store_address__city_id ON learndb2.store_address (city_id);
+CREATE INDEX category__parent_category_id ON learndb2.category (parent_category_id);
+CREATE INDEX product__name ON learndb2.product (name);
+CREATE INDEX product_price__store_id ON learndb2.product_price (store_id);
+CREATE INDEX employee__manager_id ON learndb2.employee (manager_id);
+CREATE INDEX purchase__employee_id ON learndb2.purchase (employee_id);
+CREATE INDEX purchase_item__product_id ON learndb2.purchase_item (product_id);
+
+
+
+
