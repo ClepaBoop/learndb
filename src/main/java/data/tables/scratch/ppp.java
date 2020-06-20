@@ -1,4 +1,4 @@
-package data.tables.other;
+package data.tables.scratch;
 
 public class ppp {
     public static void main(String[] args) {
