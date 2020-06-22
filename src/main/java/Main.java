@@ -1,4 +1,4 @@
-import data.CreateTable;
+import data.CreateTables;
 import data.tables.*;
 
 import java.sql.*;
@@ -14,8 +14,7 @@ public class Main {
         Statement statement = db.getConnection().createStatement();
 
 
-
-        CreateTable createTable = new CreateTable();
+        CreateTables createTables = new CreateTables();
 
 
 //        ****** create table

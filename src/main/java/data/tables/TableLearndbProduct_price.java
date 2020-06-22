@@ -14,7 +14,7 @@ public class TableLearndbProduct_price {
 
     public static ArrayList<String> fillingTable() {
         ArrayList<String> list = new ArrayList();
-//        list.add("insert learndb.product_price (product_id, store_id, price) values (1, 300, 10500.00)");
+
         list.add("insert learndb.product_price (product_id, store_id, price) values (1, 300, 10500.00)");
         list.add("insert learndb.product_price (product_id, store_id, price) values (10, 400, 75600.00)");
         list.add("insert learndb.product_price (product_id, store_id, price) values (8, 400, 37000.00)");

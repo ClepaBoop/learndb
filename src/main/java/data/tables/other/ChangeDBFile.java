@@ -3,25 +3,23 @@ package data.tables.other;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.stream.Stream;
 
-public class ChangeDBinFile {
+public class ChangeDBFile {
 
 
     private ArrayList<String> filesName;
 
-    public ChangeDBinFile(ArrayList<String> filesName) {
+    public ChangeDBFile(ArrayList<String> filesName) {
         this.filesName = filesName;
     }
 
     public static void main(String[] args) throws IOException {
         ArrayList<String> list = new ArrayList<>();
         list.add(".\\src\\main\\java\\data\\tables\\scratch\\huy.java");
-        ChangeDBinFile changeDBinFile = new ChangeDBinFile(list);
-        changeDBinFile.changeNewDB();
+        ChangeDBFile changeDBFile = new ChangeDBFile(list);
+        changeDBFile.changeNewDB();
     }
 
     public void changeNewDB() throws IOException {
